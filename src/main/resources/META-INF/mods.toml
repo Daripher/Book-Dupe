@@ -1,10 +1,10 @@
-    modLoader="javafml"
-    loaderVersion="[36,)"
-    showAsResourcePack=false
-    license="All rights reserved"
-	
-    [[mods]]
-      modId="bookdupe"
-      version="1.0"
-      displayName="Book Dupe"
-      authors="daripher"
+modLoader="javafml"
+loaderVersion="[36,)"
+showAsResourcePack=false
+license="All rights reserved"
+
+[[mods]]
+  modId="bookdupe"
+  version="1.0"
+  displayName="Book Dupe"
+  authors="daripher"
