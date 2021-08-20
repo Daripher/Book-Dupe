@@ -1,0 +1,10 @@
+{
+	"required": true,
+	"package": "daripher.bookdupe.mixin",
+	"compatibilityLevel": "JAVA_8",
+	"refmap": "bookdupe.refmap.json",
+	"mixins": [
+		"ClientPlayerEntityMixin"
+	],
+	"minVersion": "0.8"
+}
