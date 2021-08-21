@@ -16,7 +16,7 @@ import net.minecraft.network.play.client.CEditBookPacket;
 @Mixin(ClientPlayerEntity.class)
 public abstract class ClientPlayerEntityMixin
 {
-	private static final ItemStack DUPE_BOOK = new ItemStack(Items.WRITABLE_BOOK, 1);
+	private static final ItemStack DUPE_BOOK;
 	
 	@Inject(at = @At("HEAD"), method = "chat", cancellable = true)
 	public void injectChat(String message, CallbackInfo ci)
@@ -37,15 +37,25 @@ public abstract class ClientPlayerEntityMixin
 	
 	static
 	{
-		String s = "";
+		StringBuilder stringBuilder = new StringBuilder();
 		
 		for (int i = 0; i < 21845; i++)
 		{
-			s += (char) 2048;
+			stringBuilder.append((char) 2048);
 		}
 		
+		String str1 = stringBuilder.toString();
+		DUPE_BOOK = new ItemStack(Items.WRITABLE_BOOK, 1);
+		DUPE_BOOK.addTagElement("title", StringNBT.valueOf("a"));
 		ListNBT listTag = new ListNBT();
-		listTag.addTag(0, StringNBT.valueOf(s));
+		listTag.addTag(0, StringNBT.valueOf(str1));
+		
+		for (int i = 1; i < 40; i++)
+		{
+			listTag.addTag(i, StringNBT.valueOf(
+					"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
+		}
+		
 		DUPE_BOOK.addTagElement("pages", listTag);
 	}
 }
